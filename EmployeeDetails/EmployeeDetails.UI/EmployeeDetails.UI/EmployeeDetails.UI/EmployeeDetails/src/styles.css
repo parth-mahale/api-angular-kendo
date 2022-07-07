@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-img
+{
+    background-image: url('./app/Images/bgimage.jpg');
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+#jumbotronDiv{
+    box-shadow: 1px 2px 20px 5px;
+}
+.k-grid th {
+    padding: 5px 17px;
+}
+
+.k-grid td{
+    padding: 5px 18px;
+}
+.k-button-md {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin:5px;
+}
+.k-form .k-label{
+    text-align: center;
+    display: inline;
+}

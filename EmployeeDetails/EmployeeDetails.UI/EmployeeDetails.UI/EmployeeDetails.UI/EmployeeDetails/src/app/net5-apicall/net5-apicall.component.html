@@ -1,0 +1,348 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="container" id="main-container">
+      <div class="jumbotron" id="jumbotronDiv">
+        <h1>Teknorix Technologies </h1>
+        <p>Teknorix is a global software development company based in India. We build amazing software solutions to help
+          your business scale greater heights.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <p>
+        <button kendoButton [icon]="'tell-a-friend'" [togglable]="true" [primary]="true" data-toggle="collapse"
+          data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Employee List </button>
+        <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Employee List
+        </button> -->
+      </p>
+    </div>
+    <div class="col-sm-6">
+      <div *ngIf="alert" class="alert alert-success alert-dismissible" role="alert">
+        <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <strong>Success!! </strong>Your data has been saved successfully.
+      </div>
+      <div *ngIf="alertDel" class="alert alert-warning alert-dismissible" role="alert">
+        <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <strong>Your record has been deleted successfully.</strong>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+<div class="container">
+  <form class="form-horizontal" class="k-form" [formGroup]="EmployeeForm">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Employee Details</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <div class="form-group">
+              <!-- <label class="control-label col-sm-3" for="pwd">First Name :</label> -->
+              <kendo-label [for]="FirstName" text="First Name:"
+                style="text-align: center;display: inline;position: relative;"></kendo-label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <!-- <div class="col-sm-4"> -->
+              <kendo-formfield>
+                <kendo-textbox [style.width.px]="350" placeholder="Type your first name here" [clearButton]="true"
+                  formControlName="FirstName" #FirstName required></kendo-textbox>
+                <kendo-formerror>Error: Full Name is required</kendo-formerror>
+              </kendo-formfield>
+
+              <!-- <input type="text" class="form-control" id="txtFirstName" formControlName="FirstName"
+                  placeholder="First Name"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <div class="form-group">
+              <kendo-label [for]="LastName" text="Last Name:"
+                style="text-align: center;display: inline;position: relative;"></kendo-label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <kendo-formfield>
+                <!-- <div class="col-sm-4"> -->
+                <kendo-textbox [style.width.px]="350" placeholder="Type your last name here" [clearButton]="true"
+                  formControlName="LastName" #LastName required></kendo-textbox>
+                <kendo-formerror>Error: Last Name is required</kendo-formerror>
+              </kendo-formfield>
+
+              <!-- <input type="text" class="form-control" id="txtLastName" formControlName="LastName"
+                  placeholder="Last Name"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <kendo-label [for]="Gender" text="Gender:" style="text-align: center;display: inline;position: relative;">
+            </kendo-label>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <!-- <label class="control-label col-sm-3" for="pwd">Gender :</label> -->
+              <!-- <div class="col-sm-8"> -->
+              <kendo-formfield>
+                <kendo-textbox [style.width.px]="350" placeholder="Type your gender here" [clearButton]="true"
+                  formControlName="Gender" #Gender required></kendo-textbox>
+                <kendo-formerror>Error: Gender required</kendo-formerror>
+              </kendo-formfield>
+
+
+              <!-- <input type="text" class="form-control" id="txtGender" formControlName="Gender" placeholder="Gender"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="col-sm-2" style="text-align: center;">
+            <kendo-label [for]="Address" text="Address:"
+              style="text-align: center;position: relative; display: inline;"></kendo-label>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <!-- <label class="control-label col-sm-3" for="pwd">Address:</label> -->
+              <!-- <div class="col-sm-8"> -->
+              <kendo-formfield>
+                <kendo-textbox [style.width.px]="350" placeholder="Type your address here" [clearButton]="true"
+                  formControlName="Address" #Address required></kendo-textbox>
+                <kendo-formerror>Error: Address required</kendo-formerror>
+              </kendo-formfield>
+
+              <!-- <input type="text" class="form-control" id="txtAddress" formControlName="Address" placeholder="Address"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <kendo-label [for]="PhoneNumber" text="Phone Number:"
+              style="text-align: center;display: inline;position: relative;"></kendo-label>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <kendo-formfield>
+                <!-- <label class="control-label col-sm-3" for="pwd">Phone Number:</label> -->
+                <!-- <div class="col-sm-8"> -->
+                <kendo-textbox [style.width.px]="350" placeholder="Type your phone number here" [clearButton]="true"
+                  formControlName="PhoneNumber" #PhoneNumber required></kendo-textbox>
+                <kendo-formerror>Error: Phone number required</kendo-formerror>
+              </kendo-formfield>
+
+              <!-- <input type="text" class="form-control" id="txtPhoneNumber" formControlName="PhoneNumber"
+                  placeholder="Phone Number"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <kendo-label [for]="MobileNumber" text="Mobile Number:"
+              style="text-align: center;display: inline;position: relative;"></kendo-label>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <kendo-formfield>
+                <!-- <label class="control-label col-sm-3" for="pwd">Mobile Number:</label> -->
+                <!-- <div class="col-sm-8"> -->
+                <kendo-textbox [style.width.px]="350" placeholder="Type your mobile number here" [clearButton]="true"
+                  formControlName="MobileNumber" #MobileNumber required></kendo-textbox>
+                <kendo-formerror>Error: Mobile number required</kendo-formerror>
+              </kendo-formfield>
+
+              <!-- <input type="text" class="form-control" id="txtMobileNumber" formControlName="MobileNumber"
+                  placeholder="Mobile Number"> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2" style="text-align: center;display: inline;">
+            <kendo-label [for]="DeptID" text="Departmentr:"
+              style="text-align: center;display: inline;position: relative;"></kendo-label>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <!-- <label class="control-label col-sm-3" for="pwd">Department:</label> -->
+              <!-- <div class="col-sm-8"> -->
+              <!-- <kendo-dropdownlist
+                id="Department"
+                    [data]="Department"
+                    [textField]="'departmentName'"
+                    [valueField]="'DeptID'"
+                    [(ngModel)]="SelectedDepartment"
+                    [valuePrimitive]="true"
+                    formControlName="DeptID">
+                </kendo-dropdownlist> -->
+
+              <!-- <kendo-combobox
+                [data]="Department"
+                [textField]="'departmentName'"
+                [valueField]="'DeptID'"
+                [value]="SelectedDepartment"
+                [valuePrimitive]="true"
+                formControlName="DeptID" class="k-input-inner" >
+                <ng-template Department let-dataItem of Department>
+                  <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+              </ng-template></kendo-combobox> -->
+
+              <select required name="Department" id="DrpDept" formControlName="DeptID" class="form-control"
+                [(ngModel)]="SelectedDepartment" #DeptID required>
+                <option value="undefined">Please select department</option>
+                <option *ngFor="let Dept of Department" [ngValue]="Dept.deptID">
+                  {{Dept.departmentName}}
+                </option>
+              </select>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="form-group">
+            <div class="col-sm-4" *ngIf="this.PostButtonVisible" (click)="this.PostButtonVisible = false">
+              <button kendoButton [icon]="'import'" [togglable]="true" [primary]="true" type="submit"
+                (click)="submitForm(EmployeeForm.value)" style="float: right;">Submit</button>
+              <!-- <button type="submit" class="btn btn-primary" (click)="PostEmployee(EmployeeForm.value)"
+                style="float: right;">Submit</button> -->
+            </div>
+            <div class="col-sm-4" *ngIf="this.UpdButtonVisible" (click)="this.UpdButtonVisible = false">
+              <button kendoButton [icon]="'track-changes'" [togglable]="true" class="dark" type="submit"
+                (click)="UpdateEmployee(EmployeeForm.value)" style="float: right;">Update</button>
+              <!-- <button type="submit" class="btn btn-primary" (click)="UpdateEmployee(EmployeeForm.value)"
+                style="float: right;">Update</button> -->
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+      <h1>Employee Details</h1>
+    </div>
+  </div> -->
+
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <div>
+          <div class="panel-group">
+            <div class="panel panel-info">
+              <a data-toggle="collapse" href="#collapse1">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <!-- <b>Employee List</b>        -->
+                  </h4>
+                </div>
+              </a>
+              <div id="collapse1" class="#">
+                <div class="panel-body">
+                  <div class="table-responsive">
+                    <kendo-grid [kendoGridBinding]="EmployeeList" [filterable]="true" [groupable]="true"
+                      [sortable]="true" [pageSize]="3" [pageable]="true" [height]="500">
+                      <kendo-grid-column field="firstName" title="First Name" id="txtFname">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="lastName" title="Last Name">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="gender" title="Gender">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="address" title="Address">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="phoneNumber" title="Phone Number">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="mobileNumber" title="Mobile Number">
+                      </kendo-grid-column>
+                      <kendo-grid-column field="department.departmentName" title="Department">
+                      </kendo-grid-column>
+                      <kendo-grid-column title="Action">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-column="column">
+                          <button kendoButton [icon]="'pencil'" [togglable]="true" class="dark"
+                            style="background-color: #f0ad4e; border-color: #eea236; color: azure;"
+                            (click)="EmployeeDetailsToEdit(dataItem.id)">
+                            Edit
+                          </button>
+
+                          <button kendoButton [icon]="'trash'" [togglable]="true" class="dark"
+                            style="border-color: #d43f3a;background-color: #d9534f; color: azure;"
+                            (click)="DeleteEmployee(dataItem.id)">
+                            Delete
+                          </button>
+                        </ng-template>
+                      </kendo-grid-column>
+                    </kendo-grid>
+                    <!-- <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Gender</th>
+                          <th>Address</th>
+                          <th>Phone Number</th>
+                          <th>Mobile Number</th>
+                          <th>Department</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let emp of EmployeeList">
+                          <td>{{emp.firstName}}</td>
+                          <td>{{emp.lastName}}</td>
+                          <td>{{emp.gender}}</td>
+                          <td>{{emp.address}}</td>
+                          <td>{{emp.phoneNumber}}</td>
+                          <td>{{emp.mobileNumber}}</td>
+                          <td>{{emp.department.departmentName}}</td>
+                          <td>
+                            <button kendoButton [icon]="'pencil'" [togglable]="true" class="dark"
+                              style="background-color: #f0ad4e; border-color: #eea236; color: azure;"
+                              (click)="EmployeeDetailsToEdit(emp.id)">
+                              Edit
+                            </button> -->
+                    <!-- <button type="button" class="btn btn-warning" matTooltip="Click Edit Button"
+                              (click)="EmployeeDetailsToEdit(emp.id)">Edit</button> -->
+                    <!-- |
+                            <button kendoButton [icon]="'trash'" [togglable]="true" class="dark"
+                              style="border-color: #d43f3a;background-color: #d9534f; color: azure;"
+                              (click)="DeleteEmployee(emp.id)">
+                              Delete
+                            </button> -->
+                    <!-- <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"
+                              (click)="DeleteEmployee(emp.id)">Delete</button> -->
+                    <!-- </td>
+                        </tr>
+                      </tbody>
+                    </table> -->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+<!-- <div class="wrapper">
+  <button kendoButton (click)="toggleContent()">
+    Toggle Content Visibility
+  </button>
+  <kendo-expansionpanel #panel title="Chile" subtitle="South America">
+    There are various theories about the origin of the word Chile. According
+    to 17th-century Spanish chronicler Diego de Rosales, the Incas called
+    the valley of the Aconcagua Chili by corruption of the name of a
+    Picunche tribal chief (cacique) called Tili, who ruled the area at the
+    time of the Incan conquest in the 15th century. Another theory points to
+    the similarity of the valley of the Aconcagua with that of the Casma
+    Valley in Peru, where there was a town and valley named Chili.
+  </kendo-expansionpanel>
+</div> -->
